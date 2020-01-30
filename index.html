@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobx DOM</title>
+    <style>
+        #app {
+            padding: 50px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 1px solid #000;
+            padding: 10px 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <th>Param</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>Seconds</td>
+                <td class="seconds"></td>
+                <td>
+                    <button id="increment">+1000</button>
+                    <button id="decrement">-1000</button>
+                    <button id="clear">Clear</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Minutes</td>
+                <td class="minutes"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Hours</td>
+                <td class="hours"></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="js/mobx.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
