@@ -1,11 +1,5 @@
-const {observable, computed} = mobx;
-
-const $seconds = document.getElementsByClassName('seconds')[0];
-const $minutes = document.getElementsByClassName('minutes')[0];
-const $hours = document.getElementsByClassName('hours')[0];
-const $inc = document.getElementById('increment');
-const $dec = document.getElementById('decrement');
-const $clear = document.getElementById('clear');
+const {observable, computed, autorun} = mobx;
+const {$c_html, $c_style, $i_disabled, $i_onclick} = $$dom;
 
 const seconds = observable.box(0);
 const minutes = computed(() => Math.round(seconds.get() / 60));
@@ -15,15 +9,15 @@ const tooManySeconds = computed(() => seconds.get() >= 10000);
 
 autorun(() => textColor.set(seconds.get() >= 0 ? 'black' : 'green'));
 
-$$html($seconds, seconds);
-$$html($minutes, minutes);
-$$html($hours, hours);
+$c_html("seconds", seconds);
+$c_html("minutes", minutes);
+$c_html("hours", hours);
 
-$$style($seconds, 'color', textColor);
+$c_style("seconds", 'color', textColor);
 
-$$disabled($inc, tooManySeconds);
+$i_disabled("increment", tooManySeconds);
 
-$$onclick($inc, seconds, val => val + 1000);
-$$onclick($dec, seconds, val => val - 1000);
-$$onclick($clear, seconds, val => 0);
+$i_onclick("increment", seconds, val => val + 1000);
+$i_onclick("decrement", seconds, val => val - 1000);
+$i_onclick("clear", seconds, val => 0);
 
