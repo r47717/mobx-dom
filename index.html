@@ -14,6 +14,9 @@
             border: 1px solid #000;
             padding: 10px 30px;
         }
+        .message-container {
+            margin: 20px 0 0 0;
+        }
     </style>
 </head>
 <body>
@@ -44,6 +47,14 @@
                 <td></td>
             </tr>
         </table>
+        <div class="message-container">
+            <div>
+                <label for="message">Enter message:&nbsp;</label>
+                <input type="text" name="message" id="message">
+            </div>
+            <div>Reversed message: <span class="reversed-message"></span></div>
+            <div>Letter count: <span class="letter-count"></span></div>
+        </div>
     </div>
 
     <script src="js/mobx.js"></script>

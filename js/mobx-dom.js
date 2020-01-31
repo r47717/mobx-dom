@@ -5,7 +5,7 @@
 }(this, function (exports) {
     'use strict';
 
-    const { autorun } = mobx;
+    const { autorun, observable } = mobx;
 
     // bind html
 
@@ -71,6 +71,19 @@
     const $i_onclick = (id, observableValue, transform) => $$_listen(document.getElementById(id), 'click', observableValue, transform);
     const $c_onclick = (clazz, observableValue, transform) => $$_listen(document.getElementsByClassName(clazz)[0], 'click', observableValue, transform);
 
+    // inputs
+
+    const $$_input = (elem) => {
+        const observableValue = observable.box(null);
+        elem.addEventListener('input', (event) => {
+            observableValue.set(event.target.value);
+        });
+        return observableValue;
+    };
+
+    const $i_input = (id) => $$_input(document.getElementById(id));
+    const $c_input = (clazz) => $$_input(document.getElementsByClassName(clazz)[0]);
+
 
 ////////
 
@@ -96,6 +109,9 @@
     exports.$$_onclick = $$_onclick;
     exports.$i_onclick = $i_onclick;
     exports.$c_onclick = $c_onclick;
+    exports.$$_input = $$_input;
+    exports.$i_input = $i_input;
+    exports.$c_input = $c_input;
 
 }));
 
