@@ -1,1 +1,1 @@
-Simle reactive DOM manipulation lib based on Mobx
+Simple reactive DOM manipulation lib based on Mobx
